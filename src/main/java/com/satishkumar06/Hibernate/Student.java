@@ -11,16 +11,19 @@ public class Student {
 	private String name;
 	private String city;
 	
+	private Certificate certi;
+	
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(int id, String name, String city) {
+	public Student(int id, String name, String city, Certificate certi) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.city = city;
+		this.certi = certi;
 	}
 
 	public int getId() {
@@ -45,6 +48,14 @@ public class Student {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public Certificate getCerti() {
+		return certi;
+	}
+
+	public void setCerti(Certificate certi) {
+		this.certi = certi;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package com.mapping;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Answer {
@@ -13,7 +13,7 @@ public class Answer {
 	private int ansId;
 	private String answer;
 	
-	@OneToOne(mappedBy = "answer")
+	@ManyToOne
 	private Question question;
 	
 	public Answer() {

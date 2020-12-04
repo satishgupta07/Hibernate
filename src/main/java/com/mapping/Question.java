@@ -1,10 +1,11 @@
 package com.mapping;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Question {
@@ -14,20 +15,19 @@ public class Question {
 	private int quesId;
 	private String question;
 	
-	@OneToOne
-	@JoinColumn(name="a_id")
-	private Answer answer;
+	@OneToMany(mappedBy = "question")
+	private List<Answer> answers;
 	
 	public Question() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Question(int quesId, String question, Answer answer) {
+	public Question(int quesId, String question, List<Answer> answers) {
 		super();
 		this.quesId = quesId;
 		this.question = question;
-		this.answer = answer;
+		this.answers = answers;
 	}
 
 	public int getQuesId() {
@@ -46,12 +46,12 @@ public class Question {
 		this.question = question;
 	}
 
-	public Answer getAnswer() {
-		return answer;
+	public List<Answer> getAnswers() {
+		return answers;
 	}
 
-	public void setAnswer(Answer answer) {
-		this.answer = answer;
-	}	
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
 
 }

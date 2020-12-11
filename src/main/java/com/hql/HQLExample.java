@@ -1,5 +1,6 @@
 package com.hql;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -55,16 +56,27 @@ public class HQLExample {
 		
 		
 		//update query
-		Query q3 = s.createQuery("update Student set city=:c where name=:n");
-		q3.setParameter("c", "New Delhi");
-		q3.setParameter("n", "Satish Kumar Gupta");
+//		Query q3 = s.createQuery("update Student set city=:c where name=:n");
+//		q3.setParameter("c", "New Delhi");
+//		q3.setParameter("n", "Satish Kumar Gupta");
+//		
+//		int r = q3.executeUpdate();
+//		System.out.println(r + " objects updated");
+//		
+//		tx.commit();
+//		
+//		s.close();
+//		factory.close();
 		
-		int r = q3.executeUpdate();
-		System.out.println(r + " objects updated");
+		System.out.println("____________________Join_____________________________");
 		
-		tx.commit();
+		Query q4 = s.createQuery("select q.question, q.quesId, a.answer "
+				                  + "from Question as q INNER JOIN q.answers as a");
 		
-		s.close();
-		factory.close();
+		List<Object []> list4 = q4.getResultList();
+		
+		for(Object[] arr :list4) {
+			System.out.println(Arrays.toString(arr));
+		}
 	}
 }

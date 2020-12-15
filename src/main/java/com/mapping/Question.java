@@ -2,6 +2,7 @@ package com.mapping;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +17,7 @@ public class Question {
 	private int quesId;
 	private String question;
 	
-	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private List<Answer> answers;
 	
 	public Question() {
